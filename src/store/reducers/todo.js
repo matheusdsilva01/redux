@@ -1,28 +1,22 @@
-const CREATE = 'create';
-const DELETE = 'delete';
+import { CREATE, DELETE } from '../actions/todo.actions';
+
 
 const initialState = {
-    todos: [
-        {
-            id: 1,
-            title: 'Todo 1'
-        },
-        {
-            id: 2,
-            title: 'todo 2'
-        }
-    ]
+    todos: []
 }
 
-export const todoReducer = (state = initialState, action) => {
+export const todo = (state = initialState, action) => {
 
+    const ids = state.todos.map(object => {
+        return object.id;
+    });
     switch (action.type) {
         case CREATE:
             return {
                 ...state,
                 todos: [
                     ...state.todos,
-                    { ...action.payload }
+                    { id: state.todos.length ? Math.max(...ids) + 1 : 1, ...action.payload }
                 ]
             }
         case DELETE:

@@ -1,9 +1,9 @@
 import { legacy_createStore as createStore } from "redux";
 import { combineReducers } from 'redux'
-import { todoReducer } from "../reducers/todoReducer";
+import { todo } from "./reducers/todo.js";
 
 export const store = createStore(combineReducers({
-    newTodo: todoReducer
+    newTodo: todo
 }), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 // const store = createStore((
