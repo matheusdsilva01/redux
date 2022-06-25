@@ -5,7 +5,7 @@ import { todo } from "./reducers/todo.js";
 export const store = createStore(combineReducers({
     newTodo: todo
 }), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-sasa
+
 // const store = createStore((
 //     (state, action) => {
 //         console.log({ state, action });
