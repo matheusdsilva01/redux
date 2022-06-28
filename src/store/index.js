@@ -1,10 +1,11 @@
 import { legacy_createStore as createStore } from "redux";
-import { combineReducers } from 'redux'
+import { combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { todo } from "./reducers/todo.js";
 
 export const store = createStore(combineReducers({
     newTodo: todo
-}), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+}), applyMiddleware(thunk));
 
 // const store = createStore((
 //     (state, action) => {
