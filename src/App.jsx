@@ -27,7 +27,7 @@ function App() {
           <p key={el.id}>id: {el.id}<br /> title: {el.title}</p>
         ))}
         <div>
-          <input type="text" onChange={(e) => setTodo(e.target.value)} placeholder='title todo' />
+          <input type="text" onChange={(e) => setTodo(e.target.value)} placeholder='title todo para adicionar' />
           <input type="number" ref={refId} placeholder='id para deletar' />
         </div>
         <button onClick={() => dispatch(create(todo))}>Create todo</button>
