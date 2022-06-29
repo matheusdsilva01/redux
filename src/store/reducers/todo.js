@@ -1,4 +1,4 @@
-import { CREATE, DELETE } from '../actions/todo.actions';
+import { CREATE, DELETE, CREATE_SUCCESS } from '../actions/todo.actions';
 
 
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
 
 export const todo = (state = initialState, action) => {
 
-    const ids = state.todos.map(object => {
+    const ids = state.todos && state.todos.map(object => {
         return object.id;
     });
     switch (action.type) {
@@ -23,6 +23,12 @@ export const todo = (state = initialState, action) => {
             return {
                 ...state,
                 todos: state.todos.filter((el) => el.id !== action.payload)
+            }
+        case CREATE_SUCCESS:
+            console.log(action.payload.todos);
+            return {
+                ...state,
+                todos: action.payload.todos
             }
         default:
             return state;

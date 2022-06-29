@@ -1,24 +1,27 @@
+import { useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import logo from './logo.svg';
-import store from './store';
-import { useSelector, useDispatch } from 'react-redux'
-import { create, remove } from './store/actions/todo.actions'
-import { useRef, useState } from 'react';
+import { create, remove, createSuccess, createOrder } from './store/actions/todo.actions';
 
 function App() {
-  const dispatch = useDispatch();
   const [todo, setTodo] = useState('');
-  const todos = useSelector(state => {
-    return state.newTodo.todos;
+  const dispatch = useDispatch();
+  const todos = useSelector(({ newTodo }) => {
+    return newTodo.todos;
   });
+  function createTodo() {
+    dispatch(createSuccess());
+    createOrder()(dispatch);
+  }
   const refId = useRef(null)
 
   return (
-    <div className="App">
+    <div className="App" onLoad={createTodo} >
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
-        {todos.map(el => (
+        {todos && todos.map(el => (
           <p key={el.id}>id: {el.id}<br /> title: {el.title}</p>
         ))}
         <div>
