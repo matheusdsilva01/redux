@@ -2,22 +2,24 @@ import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import logo from './logo.svg';
-import { create, remove, createSuccess, createOrder } from './store/actions/todo.actions';
+import { create, remove, loadingSuccess, createOrderLoadingSuccess, loadingRequest } from './store/actions/todo.actions';
 
 function App() {
   const [todo, setTodo] = useState('');
   const dispatch = useDispatch();
+
   const todos = useSelector(({ newTodo }) => {
     return newTodo.todos;
   });
-  function createTodo() {
-    dispatch(createSuccess());
-    createOrder()(dispatch);
+  
+  function loadingTodos() {
+    dispatch(loadingRequest());
+    createOrderLoadingSuccess()(dispatch);
   }
   const refId = useRef(null)
 
   return (
-    <div className="App" onLoad={createTodo} >
+    <div className="App" onLoad={loadingTodos} >
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>

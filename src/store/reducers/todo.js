@@ -1,4 +1,4 @@
-import { CREATE, DELETE, CREATE_SUCCESS } from '../actions/todo.actions';
+import { CREATE, DELETE, LOADING_SUCCESS, LOADING_REQUEST } from '../actions/todo.actions';
 
 
 const initialState = {
@@ -24,11 +24,14 @@ export const todo = (state = initialState, action) => {
                 ...state,
                 todos: state.todos.filter((el) => el.id !== action.payload)
             }
-        case CREATE_SUCCESS:
-            console.log(action.payload.todos);
+        case LOADING_SUCCESS:
             return {
                 ...state,
                 todos: action.payload.todos
+            }
+        case LOADING_REQUEST:
+            return {
+                ...state
             }
         default:
             return state;

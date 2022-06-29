@@ -1,13 +1,9 @@
 import axios from 'axios';
-import { useSelector } from 'react-redux'
 export const CREATE = 'create';
 export const DELETE = 'delete';
-export const CREATE_SUCCESS = 'create sucess';
+export const LOADING_SUCCESS = 'loading success';
+export const LOADING_REQUEST = 'loading request';
 
-// const { newTodo } = useSelector(state => state);
-// const ids = newTodo && newTodo.todos.map(object => {
-//     return object.id;
-// });
 
 export const create = (todo) => {
     return {
@@ -17,17 +13,23 @@ export const create = (todo) => {
         }
     }
 }
-export const createSuccess = (todos) => {
+
+export const loadingRequest = () => {
     return {
-        type: CREATE_SUCCESS,
+        type: LOADING_REQUEST
+    }
+}
+
+export const loadingSuccess = (todos) => {
+    return {
+        type: LOADING_SUCCESS,
         payload: {todos}
     }
 }
 
-export const createOrder = () => async (dispatch) => {
+export const createOrderLoadingSuccess = () => async (dispatch) => {
     const { data } = await axios.get('http://localhost:3001/todos');
-    console.log(data);
-    dispatch(createSuccess(data))
+    dispatch(loadingSuccess(data))
 }
 
 
