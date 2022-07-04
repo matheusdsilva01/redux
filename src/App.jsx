@@ -2,19 +2,18 @@ import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import logo from './logo.svg';
-import { create, remove, loadingSuccess, createOrderLoadingSuccess, loadingRequest } from './store/actions/todo.actions';
+import { create, loadingRequest, remove } from './store/actions/todo.actions';
 
 function App() {
   const [todo, setTodo] = useState('');
   const dispatch = useDispatch();
 
-  const todos = useSelector(({ newTodo }) => {
-    return newTodo.todos;
+  const todos = useSelector(({ newTodos }) => {
+    return newTodos.todos;
   });
-  
+
   function loadingTodos() {
     dispatch(loadingRequest());
-    createOrderLoadingSuccess()(dispatch);
   }
   const refId = useRef(null)
 

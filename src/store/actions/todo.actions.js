@@ -27,12 +27,6 @@ export const loadingSuccess = (todos) => {
     }
 }
 
-export const createOrderLoadingSuccess = () => async (dispatch) => {
-    const { data } = await axios.get('http://localhost:3001/todos');
-    dispatch(loadingSuccess(data))
-}
-
-
 export const remove = (id) => {
     return {
         type: 'delete',

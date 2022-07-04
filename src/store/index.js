@@ -1,9 +1,16 @@
-import { applyMiddleware, combineReducers, compose, legacy_createStore as createStore } from "redux";
-import thunk from 'redux-thunk';
-import { todo } from "./reducers/todo.js";
-const composeEnhancers = (window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__) || compose;
-export const store = createStore(combineReducers({
-    newTodo: todo
-}), composeEnhancers(applyMiddleware(thunk)));
+import { applyMiddleware, compose, legacy_createStore as createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { reducers } from "./reducers/index.js";
+import createSagaMiddleware from "redux-saga";
+import sagas from "./sagas/todo.saga.js";
+
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(reducers, compose(
+    applyMiddleware(sagaMiddleware),
+    composeWithDevTools()
+));
+
+sagaMiddleware.run(sagas)
 
 export default store;
