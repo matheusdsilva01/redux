@@ -1,3 +1,4 @@
+import iTodo from '../../interfaces/Todo';
 import { CREATE, DELETE, LOADING_SUCCESS, LOADING_REQUEST } from '../actions/todo.actions';
 
 
@@ -5,9 +6,9 @@ const initialState = {
     todos: []
 }
 
-export const todo = (state = initialState, action) => {
+export const todo = (state = initialState, action: { type: any; payload: any; }) => {
 
-    const ids = state.todos && state.todos.map(object => {
+    const ids = state.todos && state.todos.map((object: iTodo) => {
         return object.id;
     });
     switch (action.type) {
@@ -22,7 +23,7 @@ export const todo = (state = initialState, action) => {
         case DELETE:
             return {
                 ...state,
-                todos: state.todos.filter((el) => el.id !== action.payload)
+                todos: state.todos.filter((el: iTodo) => el.id !== action.payload)
             }
         case LOADING_SUCCESS:
             return {

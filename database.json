@@ -2,15 +2,21 @@
     "todos": [
         {
             "id": 1,
-            "title": "Learn React"
+            "title": "Learn React",
+            "completed": false,
+            "created": "2016-01-01T00:00:00.000Z"
         },
         {
             "id": 2,
-            "title": "Learn Angular"
+            "title": "Learn Angular",
+            "completed": false,
+            "created": "2016-01-01T00:00:00.000Z"
         },
         {
             "id": 3,
-            "title": "Learn Vue"
+            "title": "Learn Vue",
+            "completed": false,
+            "created": "2016-01-01T00:00:00.000Z"
         }
     ]
 }
