@@ -11,8 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.card-todo{
+  width: 225px;
+  height: 225px;
+  background: #000;
+}
 
-
+.form-create-todo{
+  display: flex;
+  flex-direction: column;
+}
 
 .App {
   text-align: center;

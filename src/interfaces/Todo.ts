@@ -1,6 +1,7 @@
 export default interface iTodo {
-    id:        number;
-    title:     string;
-    completed: boolean;
-    created:   Date;
+    id:          number | string;
+    title:       string;
+    completed:   boolean;
+    created:     Date;
+    description: string;
 }
